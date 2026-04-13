@@ -270,3 +270,35 @@ Container(child:
                   border: Border.all(width: 11),
                   borderRadius: BorderRadius.all(Radius.zero),
                 ), used to decorate the container 
+
+
+expanded widget --->
+
+ Expanded(
+            flex: 2,
+            child: Container(
+                    width: 100,
+                    height: 100,
+                    color: Colors.red,
+                  ),
+          ),
+
+
+
+          
+use theme
+theme: ThemeData(
+PrimarySwatch:Colors.blue,
+textTheme:TextTheme(
+subtitle1: TextStyle(fontSize: 100,fontFamily: FontMain),
+)
+)
+
+
+
+using in the widget --->
+
+Text("hello", style:Theme.of(context).textTheme.subtitle1);
+Text("hello", style:Theme.of(context).textTheme.subtitle1!.copyWith(color:colors.blue));  - we can make
+the widget different from the default we write on the theme code also dont forget to include ! it is important 
+
