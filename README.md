@@ -270,3 +270,87 @@ Container(child:
                   border: Border.all(width: 11),
                   borderRadius: BorderRadius.all(Radius.zero),
                 ), used to decorate the container 
+
+
+
+                going from one page to another -->
+
+                INTROPAGE CODE
+
+                import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:untitled/main.dart';
+
+class IntroPage extends StatelessWidget{
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('First'),
+
+      ),
+      body:
+      ElevatedButton(onPressed: (){
+
+        Navigator.push(context, MaterialPageRoute(builder: (context) => MyHomePage(title: 'h',) ) );
+      }, child: Text("Next")),
+    );
+  }
+
+}
+
+
+main.dart
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(
+
+        colorScheme: .fromSeed(seedColor: Colors.deepPurple),
+      ),
+      debugShowCheckedModeBanner: false,
+      home: IntroScreen(), -- one change here and this is the area which will show the first page 
+    );
+  }
+
+
+
+
+  Splash screen -->
+  import 'dart:async';
+
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:untitled/IntroPage.dart';
+import 'package:untitled/main.dart';
+
+class Splashscreen extends StatefulWidget{
+  @override
+  State<Splashscreen> createState() => _SplashscreenState();
+}
+
+class _SplashscreenState extends State<Splashscreen> {
+  @override
+  void initState() {
+    Timer(Duration(seconds: 2),(){  //used to delay
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => IntroPage() )); //it will replace the intro screen with new screen
+    });
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+
+    return Scaffold(
+      body:Container(
+        child:
+     Center(child: Text("baby")),)
+    );
+  }
+}
+
+
+
+in the main.dart same home : SplashScreen(); - change only this 
