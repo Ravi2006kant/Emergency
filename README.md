@@ -411,3 +411,16 @@ height: 200,
       ),
 
 in the main.dart same home : SplashScreen(); - change only this 
+
+
+gridView.builder --->
+
+
+GridView.builder(gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3,crossAxisSpacing:11 ),
+          
+
+          itemBuilder: (context,index){
+        return Container(color: Colors.red);
+
+      })
+
