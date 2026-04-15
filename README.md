@@ -353,4 +353,61 @@ class _SplashscreenState extends State<Splashscreen> {
 
 
 
+grid view static --->
+
+
+Column(
+        children: [
+          Container(
+      height: 250,
+          child:
+
+
+              // dont use the column it is only to show the difference of botht the grid use direct to body 
+          GridView.count(crossAxisCount: 2,  // in both side turn in phone it will show in 2
+                                              //use where to fix the grid count means only 4 in both landscape and vertical
+
+
+
+
+            // we will use both gridview. extent and count wher edata is static
+
+            crossAxisSpacing: 10 ,
+            mainAxisSpacing: 10,
+            children: [
+
+            Container(color: Colors.red,),
+            Container(color: Colors.blue,),
+            Container(color: Colors.pink,),
+            Container(color: Colors.yellow,),
+            Container(color: Colors.cyan,),
+            Container(color: Colors.red,),
+            Container(color: Colors.blue,),
+            Container(color: Colors.pink,),
+            Container(color: Colors.yellow,),
+            Container(color: Colors.cyan,),
+          ],)),
+        Container(
+          height: 50,
+        ),
+
+          Container(
+height: 200,
+            child:
+          GridView.extent(maxCrossAxisExtent: 50,  // width of the grid  //it will show according the width but max width of the container
+                                                // use this where want to fix the grid size
+            children: [Container(color: Colors.red,),
+              Container(color: Colors.blue,),
+              Container(color: Colors.pink,),
+              Container(color: Colors.yellow,),
+              Container(color: Colors.cyan,),
+              Container(color: Colors.red,),
+              Container(color: Colors.blue,),
+              Container(color: Colors.pink,),
+              Container(color: Colors.yellow,),
+              Container(color: Colors.cyan,),],),
+        ),
+        ]
+      ),
+
 in the main.dart same home : SplashScreen(); - change only this 
