@@ -1,1 +1,441 @@
 
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const MaterialApp(
+      debugShowCheckedModeBanner: false,
+home: ,
+    );
+  }
+}
+
+
+class _ColorChangeDemoState extends State<ColorChangeDemo> {
+  Color _textColor = Colors.black; // initial color
+
+  void _changeColor() {
+    setState(() {
+      // toggle between two colors
+      _textColor = _textColor == Colors.black ? Colors.red : Colors.black;
+    });
+  }
+var Email = TextEditingController();
+  var pass = TextEditingController();
+  @override
+  Widget build(BuildContext context) {
+
+    return Scaffold(
+      appBar: AppBar(title: const Text("Color Change Example")),
+      body:Column(
+        children: [
+          Center(
+            child: Container(
+              width: 250,
+                child: TextField(
+keyboardType: TextInputType.number,  // use to change the keyboard into numpad
+                  controller: Email,
+                  decoration: InputDecoration(
+                    enabled: false, //when this is false then the disabled border will be used and when true the enbled border
+                    focusedBorder: OutlineInputBorder(   // when the box is clicked it will change its color into blue
+                      borderSide: BorderSide(color: Colors.blue,width: 2),
+                      borderRadius: BorderRadius.circular(31),
+
+                    ),
+                    enabledBorder: OutlineInputBorder(   // by default the textfield are enabled so everything in this will be showed to the user
+                      borderSide: BorderSide(color: Colors.green,width: 2),
+                      borderRadius: BorderRadius.circular(31),
+
+                    ),
+                    disabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.grey,width: 2),
+                      borderRadius: BorderRadius.circular(31),
+
+                    ),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(31),
+                      borderSide: BorderSide(color: Colors.red),
+
+                    ),
+                    suffixText: "username",
+                    hintText: 'set the name', // use to set the hint
+                    suffixIcon: IconButton(onPressed: (){  //use icon if only to show use iconbutton when we want to perform anything on action
+
+                    }, icon: Icon(Icons.remove_red_eye,color: Colors.red,))
+      ,prefix: Icon(Icons.ice_skating)  // for front
+                  ),
+                )
+            ),
+          ),
+          Center(
+            child: Container(
+                width: 250,
+                child: TextField(
+
+                  controller: pass,  // use to get the text
+                  obscureText: true,    // used to hide the password
+                  obscuringCharacter: "*", // use to set the password design
+                  decoration: InputDecoration(
+
+                      enabled: false, //when this is false then the disabled border will be used and when true the enbled border
+                      focusedBorder: OutlineInputBorder( // when the box is clicked it will change its color into blue
+
+                        borderSide: BorderSide(color: Colors.blue,width: 2),
+                        borderRadius: BorderRadius.circular(31),
+
+                      ),
+                      enabledBorder: OutlineInputBorder(   // by default the textfield are enabled so everything in this will be showed to the user
+                        borderSide: BorderSide(color: Colors.green,width: 2),
+                        borderRadius: BorderRadius.circular(31),
+
+                      ),
+                      disabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.grey,width: 2),
+                        borderRadius: BorderRadius.circular(31),
+
+                      ),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(31),
+                        borderSide: BorderSide(color: Colors.red),
+
+                      ),
+                      suffixText: "username",
+                      suffixIcon: IconButton(onPressed: (){  //use icon if only to show use iconbutton when we want to perform anything on action
+
+                      }, icon: Icon(Icons.remove_red_eye,color: Colors.red,))
+                      ,prefix: Icon(Icons.ice_skating)  // for front
+                  ),
+                )
+            ),
+          ),
+          ElevatedButton(onPressed: (){
+            String name = Email.text.toString();
+            String print = pass.text.toString();
+            // print("email : $Email,pass : $pass");
+          }, child: Text("login"))
+,        ],
+      )
+      );
+
+  }
+}
+
+
+
+
+
+
+
+
+/*
+*  Column(
+        children: [
+
+          Center(
+            child: Text("Hello sweetie",style: TextStyle(backgroundColor: Colors.red,)
+                    ,
+          )),
+        ElevatedButton(onPressed: (){  //elevated button
+        }
+    , child:Text("click me ")),
+
+          TextButton(onLongPress: (){   //text button
+
+          },  onPressed: () {  },
+          child:Text("text button")),
+
+OutlinedButton(onPressed: (){ //outlined button
+
+}, child:Text("outlines")),
+
+          TextButton(     //docs
+              style: ButtonStyle(
+                foregroundColor: WidgetStateProperty.all<Color>(Colors.blue),
+                overlayColor: WidgetStateProperty.resolveWith<Color?>(
+                      (Set<WidgetState> states) {
+                    if (states.contains(WidgetState.hovered))
+                      return Colors.blue.withOpacity(0.04);
+                    if (states.contains(MaterialState.focused) ||
+                        states.contains(MaterialState.pressed))
+                      return Colors.blue.withOpacity(0.12);
+                    return null; // Defer to the widget's default.
+                  },
+                ),
+              ),
+              onPressed: () { },
+              child: Text('TextButton')
+          ),
+
+          TextButton(
+            style: ButtonStyle(
+              overlayColor: MaterialStateProperty.resolveWith<Color?>(
+                      (Set<MaterialState> states) {
+                    if (states.contains(MaterialState.focused))
+                      return Colors.red;
+                    return null; // Defer to the widget's default.
+                  }
+              ),
+            ),
+            onPressed: () { },
+            child: Text('TextButton'),
+          ),
+
+
+          TextButton(
+            style: TextButton.styleFrom(
+              backgroundColor: Colors.red,
+              shadowColor: Colors.yellow,
+            ),
+            onPressed: () { },
+            child: Text('TextButton with custom foreground'),
+          ),
+
+          ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.red,
+              foregroundColor: Colors.white,  // color effect inside button when clicked
+            ),
+            onPressed: () { },
+            child: Text('ElevatedButton with custom foreground/background'),
+          ),
+
+          TextButton(
+            style: ButtonStyle(
+              overlayColor: MaterialStateProperty.resolveWith<Color?>(
+                      (Set<MaterialState> states) {
+                    if (states.contains(MaterialState.focused))
+                      return Colors.red;
+                    if (states.contains(MaterialState.hovered))
+                      return Colors.green;
+                    if (states.contains(MaterialState.pressed))
+                      return Colors.blue;
+                    return null; // Defer to the widget's default.
+                  }),
+            ),
+            onPressed: () { },
+            child: Text('TextButton with custom overlay colors'),
+          ),
+
+
+          ElevatedButton(
+            style: ElevatedButton.styleFrom(disabledForegroundColor: Colors.red),
+            onPressed: null,
+            child: Text('ElevatedButton with custom disabled colors'),
+          ),
+
+          OutlinedButton(
+            style: ButtonStyle(
+              shape: MaterialStateProperty.all<OutlinedBorder>(StadiumBorder()),
+              side: MaterialStateProperty.resolveWith<BorderSide>(
+                      (Set<MaterialState> states) {
+                    final Color color = states.contains(MaterialState.pressed)
+                        ? Colors.blue
+                        : Colors.red;
+                    return BorderSide(color: color, width: 2);
+                  }
+              ),
+            ),
+            onPressed: () { },
+            child: Text('OutlinedButton with custom shape and border'),
+          ),
+
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: [
+                Container(
+                  height: 100,
+                  width: 200,
+                  color: Colors.red,
+                  margin: EdgeInsets.only(right: 11),
+                ),
+                Container(
+                  height: 100,
+                  width: 200,
+                  color: Colors.greenAccent,
+                  margin: EdgeInsets.only(right: 11),
+                ),
+                Container(
+                  height: 100,
+                  width: 200,
+                  color: Colors.pinkAccent,
+                  margin: EdgeInsets.only(right: 11),
+                )
+              ],
+            ),
+          )
+
+        ],
+
+      ),
+*
+*
+*
+* Center(
+        child: Column(
+          children: [
+            Text("Flutter"),
+            Text("Bio of the flutter"),
+            ElevatedButton(onPressed: (){}, child: Text("button")),
+
+            Container(width:150,child: Image.asset('assets/images/hello.png')),
+            CircleAvatar(
+              child:Text("hello",style: TextStyle(fontSize: 15,color: Colors.red),),
+              backgroundColor: Colors.green,
+              radius: 30,
+
+              foregroundColor: Colors.black,
+              backgroundImage: AssetImage('assets/images/hello.png'),
+
+            )
+          ],
+
+        ),
+      )
+*
+*
+*
+*
+*   Column(
+        children: [
+          Text("time "),
+          ElevatedButton(onPressed: (){
+            setState(() {
+            Text("helloi");
+            });
+          }, child:Text("click me"))
+        ],
+      )
+* */
+
+
+/*
+Center(
+
+        //using this when the pixel out of screen in vertical
+        child: SingleChildScrollView(
+        scrollDirection: Axis.horizontal,  // this is used when pixel running out in horizontal direction
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container (
+              width:100,
+          height: 100,
+            margin: EdgeInsets.only(bottom: 10),
+            color: Colors.red,
+            child:InkWell(
+              onTap: (){
+                print('hello');
+              },
+              onLongPress: (){
+                print('world');
+              },
+              onDoubleTap: () {
+                print('text');
+
+              }
+              ,
+            ),
+
+            ),
+          Container(child:
+          ListView.builder(itemBuilder: (context, index) {
+            return Text(arrName[index],style: TextStyle(fontSize: 15),);
+          },
+          itemCount: arrName.length,),),
+
+                child:InkWell(
+                  onTap: (){
+                    print('hello');
+                  },
+                  onLongPress: (){
+                    print('world');
+                  },
+                  onDoubleTap: () {
+                    print('text');
+
+                  }
+                  ,
+                ),
+
+              ),
+              Container (
+                width:100,
+                height: 100,
+                color: Colors.red,
+                child:InkWell(
+                  onTap: (){
+                    print('hello');
+                  },
+                  onLongPress: (){
+                    print('world');
+                  },
+                  onDoubleTap: () {
+                    print('text');
+
+                  }
+                  ,
+                ),
+
+              ),
+              Container (
+                width:100,
+                height: 100,
+                color: Colors.red,
+                child:InkWell(
+                  onTap: (){
+                    print('hello');
+                  },
+                  onLongPress: (){
+                    print('world');
+                  },
+                  onDoubleTap: () {
+                    print('text');
+
+                  }
+                  ,
+                ),
+
+              ),
+          Text(
+                "Click the button to change my color!",
+                style: TextStyle(fontSize: 20, color: _textColor),
+              ),
+              const SizedBox(height: 20),
+
+
+              ///there are five types of button created down below
+              IconButton(onPressed: (){}, icon: Text("hello")),
+              FloatingActionButton(onPressed: (){})
+              ,
+              OutlinedButton(onPressed: (){}, child: Text("outline")),
+              ElevatedButton(
+                onPressed: _changeColor,
+                child: const Text("Change Color"),
+              ),
+              TextButton(onPressed: (){}, child: Text("Text")),TextButton.icon(onPressed: (){}, label: CircleAvatar()),
+            Column(
+              children: [
+                Container(
+                  width: 100,
+                  height: 10,
+                  margin: EdgeInsets.only(top: 10),
+                  color: Colors.yellow,
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 25),
+                    child: Center(child: Text("Container",style: TextStyle(backgroundColor: Colors.blue,color:Colors.black))),
+                  ),
+                ),
+              ],
+            )],
+          ),
+        ),
+
+ */
