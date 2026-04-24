@@ -1,0 +1,12 @@
+---------------INTRO SCREEEN--------------
+
+// use this before widget build
+// then put the introScreen in the home of main.dart
+ void initState(){
+    super.initState();
+
+  Timer(Duration(seconds: 2),(){
+    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Loginscreen(),));
+  });     
+
+-------
