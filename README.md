@@ -1,8 +1,5 @@
 notes and syntax of android studio 
 
-
-
-
             ///there are five types of button created down below
             IconButton(onPressed: (){}, icon: Text("hello")),
             FloatingActionButton(onPressed: (){})
