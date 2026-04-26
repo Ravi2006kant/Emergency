@@ -2,6 +2,7 @@
 
 // use this before widget build
 // then put the introScreen in the home of main.dart
+
  void initState(){
     super.initState();
 
@@ -9,4 +10,91 @@
     Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Loginscreen(),));
   });     
 
--------
+---------------NAVIGATION-----------------
+// going from one page to another
+
+Navigator.push(context, MaterialPageRoute(builder: (context) =>  MyHomePage()));
+         
+--------------BOTTOM MESSAGE---------------
+
+ScaffoldMessenger.of(context).showSnackBar(
+const SnackBar(content: Text("Rescue Request Submitted")),
+
+--------------SCROLLVIEW---------------
+// use this in widget which you want to make scrollable
+
+SingleChildScrollView( 
+scrollDirection: Axis.horizontal, )
+
+--------------LISTVIEW---------------
+
+// used for static data 
+       ListView(
+           reverse: true,
+           scrollDirection: Axis.horizontal,
+           children: [
+           Text("one"),
+           Text("two"),
+              ],
+            ),
+
+// ListView.builder -- used to get the dynamic data (DB,Server)
+ var arrName =['rhi','hei','hell','dh'];  - the data will come from db or either server and we will pass it into array 
+      
+       ListView.builder(itemBuilder: (context, index) {
+        return Text(arrName[index],  --- arrNmae [index] used to give the no. of items provide in the listview
+        style: TextStyle(fontSize: 15),); 
+      },
+
+      itemCount: arrName.length,  // used to see how many items you want 
+      itemExtent:100  // give space from this
+      scrolldirection: Axis.horizontal
+      
+      ),),  -- listview.builder used to take less memory as it will destroy the data when passed 
+
+//ListView.seperated 
+
+
+seperate listviewv --->
+
+      var arrName =['rhi','hei','hell','dh'];   
+
+           ListView.separated(itemBuilder: (context,index){
+                  return Text(arrName[index]); 
+                } , separatorBuilder: (context,index){
+                  return Divider(height: 4,);  //pass widget which you want to show between two items
+                }, itemCount: 5),
+
+
+--------------TEXTFIELD---------------
+
+                    TextField(
+                        keyboardType: TextInputType.emailAddress,  // used to select which type of keyboard you want
+                            decoration: InputDecoration( //used to decorate the textfield
+                              labelStyle: TextStyle( //used for label style
+                                color: Colors.red
+                              ),
+                              hintText: "hello",  //set hint
+                              hintStyle: TextStyle(color: Colors.white), 
+                              filled: true, //used to set default app color inside the textfield
+                              fillColor: Colors.red,  
+                              prefixIcon: Icon(Icons.email),  // used to put at last
+                              suffixText:'hello' ,        //used to put at first
+                              
+                              labelText: "Email",
+                              enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(20),
+                                borderSide: const BorderSide(
+                                  width: 1,
+                                  color: Colors.blue,
+                                ),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(20),
+                                borderSide: const BorderSide(
+                                  width: 2,
+                                  color: Colors.lightGreen,
+                                ),
+                              ),
+                            ),
+                                                  );
